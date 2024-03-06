@@ -25,10 +25,10 @@ export default function Todo()
     }
 
     const deleteTask = (index) => {
-        const newTaskList = [...taskList]
-        newTaskList.splice(index, 1)
-        setTaskList(newTaskList)
-      }
+        const updatedTaskList = taskList.filter((_, i) => i !== index);
+        setTaskList(updatedTaskList);
+      };
+      
     
     const clearList = () =>{
         setTaskList("")
@@ -47,7 +47,7 @@ export default function Todo()
                 <tr key={index} align="center">
                 <td>{index+1}</td>
                 <td>{task}</td>
-                <td><button onClick={deleteTask} className='cbtn'>Delete</button></td>
+                <td><button onClick={() => deleteTask(index)} className='cbtn'>Delete</button></td>
             </tr>
             )):
             <h2 align="center">No Tasks</h2>
